@@ -43,7 +43,7 @@ html, body {
 #about {
 }
 
-#information {
+#categories {
   background: url(../images/working.jpg) no-repeat center center fixed;
   display: table;
   height: 800px;
@@ -54,7 +54,7 @@ html, body {
   -o-background-size: cover;
   background-size: cover;
 }
-#information .panel {
+#categories .panel {
   opacity: 0.85;
 }
 
