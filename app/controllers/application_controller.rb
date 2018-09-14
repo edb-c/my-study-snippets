@@ -1,5 +1,6 @@
 require './config/environment'
 
+# Inherits from Sinatra::Base
 class ApplicationController < Sinatra::Base
 
   configure do
