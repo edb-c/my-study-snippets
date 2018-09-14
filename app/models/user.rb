@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  include Slugifiable::InstanceMethods
-  extend Slugifiable::ClassMethods
+#  include Slugifiable::InstanceMethods
+#  extend Slugifiable::ClassMethods
 
   has_many :snippets
   has_many :categories, :through => :snippets

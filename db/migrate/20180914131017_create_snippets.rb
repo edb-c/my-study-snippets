@@ -3,7 +3,8 @@ class CreateSnippets < ActiveRecord::Migration
     create_table :snippets do |t|
       t.string :name
       t.text :snippit
-
+       t.integer :user_id
+       
       t.timestamps null: false
     end
   end
