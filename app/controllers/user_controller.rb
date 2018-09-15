@@ -3,6 +3,7 @@ class UserController < ApplicationController
 
 #Login the User
   get '/login' do
+    flash[:message] = "Welcome!"
     erb :'users/loginregister'
   end
 
@@ -15,9 +16,12 @@ post '/register' do
   if user.save
   #  session[:user_id] = user.id
 #    redirect "/users/#{user.slug}"
+     flash[:message] = "Thank you for registering!"
      redirect "/"
   else
-    redirect 'users/loginregister'
+    #redirect 'users/loginregister'
+    flash.now[:message] = "Invalid Entries. Please try again."
+    erb :'users/loginregister'
   end
 end
 

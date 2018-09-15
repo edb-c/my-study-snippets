@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
 # Required for logins and flash messages
     enable :sessions
     set :session_secret, "password_security"
-
+    register Sinatra::Flash
   end
 
   get "/" do
