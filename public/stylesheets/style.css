@@ -73,10 +73,12 @@ footer .glyphicon:hover {
   position: relative;
   min-height: 200px;
   padding: 50px;
-  font-size: 15px
+
 }
-.loginModal {
+.modal-body {
   margin-left: 20px;
   position: relative;
   padding: 50px;
+  font-size: 15px;
+  line-height: 1.5;
 }
