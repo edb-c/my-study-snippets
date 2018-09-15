@@ -8,9 +8,8 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
 
 # Required for logins and flash messages
-#    enable :sessions
-#    set :session_secret, "password_security"
-#    register Sinatra::Flash
+    enable :sessions
+    set :session_secret, "password_security"
 
   end
 
