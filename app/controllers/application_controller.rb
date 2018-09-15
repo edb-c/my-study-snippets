@@ -7,10 +7,28 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
 
-# Required for logins and flash messages
+#Enable and set an encryption key that will be used to
+#create a session_id
     enable :sessions
-    set :session_secret, "password_security"
+    set :session_secret, "deus_tecum"
+
+# Required for logins and flash messages
     register Sinatra::Flash
+  end
+
+#Steps to login user
+#Find user by inputted username
+#Authenticate user -valid username and password
+#Set new session and redirect user to their own snippet page
+  post '/login' do
+    @user = User.find_by(username: params[:username])
+    if !!@user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect "/snippets/show"
+    else
+      flash[:message] = "Username and/or password invalid, please try again."
+      redirect '/login'
+    end
   end
 
   get "/" do

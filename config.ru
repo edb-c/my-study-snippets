@@ -6,6 +6,11 @@ end
 
 # Using PATCH, PUT and DELETE
 #requests with Rack::MethodOverride Middleware
+#The MethodOverride middleware will intercept
+#every request sent and received by our application.
+#If it finds a request with name="_method",
+#it will set the request type based
+#on what is set in the value attribute
 use Rack::MethodOverride
 
 # Run the ApplicationController
