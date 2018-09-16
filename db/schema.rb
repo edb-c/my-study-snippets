@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20180915005754) do
     t.string   "snippet_name"
     t.text     "snippit"
     t.integer  "users_id"
-    t.integer  "categories_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "category_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

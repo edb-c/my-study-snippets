@@ -9,7 +9,7 @@ class CreateSnippets < ActiveRecord::Migration
        t.string     :snippet_name
        t.text       :snippit
        t.belongs_to  :users
-       t.belongs_to :categories
+       t.belongs_to :category
       t.timestamps null: false
     end
   end

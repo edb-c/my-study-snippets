@@ -3,5 +3,5 @@ class Snippet < ActiveRecord::Base
 #  extend Slugifiable::ClassMethods
 
   belongs_to :user
-  belongs_to :category
+  belongs_to :categories
 end
