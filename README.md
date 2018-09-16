@@ -24,8 +24,6 @@ This application is created to help one study, by giving a user the ability crea
 
 Visit the IP server address listed.
 
-# Contributors Guide
-Please review the [contributors guide](https://github.com/edb-c/my-study-snippets/blob/master/contributers-guide.md) if you would like to contribute to this project.
 
 # License
-[MIT License](https://github.com/edb-c/my-study-snippets/blob/master/LICENSE)
+[MIT License]

@@ -2,9 +2,16 @@
   <div class="container">
     <h1>Snippets</h1>
     <p>Here is the current list of All Snippets.</p>
+    <p><%= @snippet.content %>
+      <form method="post" action="/snippets/<%=@snippet.id%>/delete">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Snippet">
+      </form>
+
+      <a href="/snippets/<%=@snippet.id%>/edit">Edit Snippet </a>
+
   </div>
   <form action="/logout" method="post">
     <input type="submit" value="Log Out" class="btn btn-outline-secondary" type="button">
   </form>
 </div>
-#<a href="/snippets/<%= @snippet.id%>/edit">Edit this snippet</a>

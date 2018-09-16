@@ -13,10 +13,9 @@ end
 #on what is set in the value attribute
 use Rack::MethodOverride
 
-# Run the ApplicationController
-run ApplicationController
-
 # Use the following controllers
 use UserController
 #use CategoryController
 use SnippetController
+# Run the ApplicationController
+run ApplicationController

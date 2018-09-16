@@ -19,19 +19,13 @@ ActiveRecord::Schema.define(version: 20180915005754) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "categorysnippets", force: :cascade do |t|
-    t.integer  "snippet_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "snippets", force: :cascade do |t|
     t.string   "snippet_name"
     t.text     "snippit"
-    t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "users_id"
+    t.integer  "categories_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|

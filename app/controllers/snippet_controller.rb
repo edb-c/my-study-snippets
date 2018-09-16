@@ -1,9 +1,11 @@
 class SnippetController < ApplicationController
+
   get '/snippets' do
+
     if logged_in?
-      @snippets = Snippet.all
+      @snippet = Snippet.all
       erb :'/snippets/show'
-    else
+   else
       redirect to '/login'
     end
   end
