@@ -18,7 +18,7 @@ end
 post '/login' do
   @user = User.find_by(username: params[:username])
   flash[:message] = "#{@user.username}"
-    if #@user &&
+    if @user &&
       @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/snippets/#{@user.id}"
