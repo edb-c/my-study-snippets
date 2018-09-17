@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20180915005754) do
 
   create_table "snippets", force: :cascade do |t|
     t.string   "snippet_name"
-    t.text     "snippit"
+    t.text     "snippet_text"
     t.integer  "users_id"
     t.integer  "category_id"
     t.datetime "created_at",   null: false

@@ -1,30 +1,51 @@
 # Inherits from ApplicationController
 class UserController < ApplicationController
 
-  get '/login' do
-    flash[:message] = "Welcome!"
-
+get '/login' do
     if logged_in?
-      redirect "/snippets/show"
+      redirect "/snippets/#{current_user.id}"
+      #erb :'users/show'
     else
-      erb :'users/loginregister'
+      flash[:message] = "Welcome, please sign in or register!"
     end
-  end
-  
-#Steps to login user
+end
+
+#Login user
 #Find user by inputted username
 #Authenticate user -valid username and password
 #Set new session and redirect user to their own snippet page
-
-  post '/login' do
-    @user = User.find_by(username: params[:username])
-    if !!@user && @user.authenticate(params[:password])
+post '/login' do
+  @user = User.find_by(username: params[:username])
+    if @user #&& @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect "/snippets/show"
+      redirect "/snippets/#{@user.id}"
     else
       flash[:message] = "Username and/or password invalid, please try again."
       redirect '/login'
     end
+end
+
+
+#Logout route
+
+get '/logout' do
+  session.clear
+  redirect '/'
+end
+=begin
+
+
+  post '/login' do
+    @user = User.find_by(username: params[:username])
+
+      if @user #&& @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect "/users/show"
+  #    erb :'users/show'
+    else
+     flash[:message] = "Username and/or password invalid, please try again."
+     redirect '/login'
+   end
   end
 
 # Register form action - Creates new user
@@ -44,10 +65,7 @@ post '/register' do
     erb :'users/loginregister'
   end
 end
+=end
 
-post '/logout' do
-  session.clear
-  redirect '/login'
-end
 
 end  #/end class

@@ -1,0 +1,18 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Your Snippets</h1>
+    <p>Here is the current list of All Your Snippets.</p>
+    <% @snippets = Snippet.where(users_id = "#{params[:id]}")  %>
+    <% @snippets.each do |snippet| %>
+      <div>
+        Snippet Name: <%=snippet.snippet_name%>
+        Category:     <%=snippet.category_id%>
+        Snippet Text: <%=snippet.snippet_text%>
+      </div>
+    <% end %>
+    <br>
+    <br>
+    
+    <a href="/snippets/new">Create A New Snippet</a>
+   </div>
+ </div>

@@ -16,12 +16,9 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash
   end
 
+# Route for Homepage
   get '/' do
-    if logged_in?
-      redirect "/snippets/show"
-    else
-      erb :'index'  
-    end
+        erb :index
   end
 
   #Conventional coding pattern- create helper methods to be used

@@ -1,15 +1,29 @@
 class SnippetController < ApplicationController
 
-  get '/snippets' do
 
+#Show all Snippets
+
+  get '/snippets/:id' do
     if logged_in?
-      @snippet = Snippet.all
-      erb :'/snippets/show'
-   else
-      redirect to '/login'
+      erb :'users/show'
+    else
+      erb :'snippets/show'
     end
   end
 
+# Create a New Spinnet
+
+  get '/snippets/new' do
+    if logged_in?
+      erb :'snippets/new'
+    else 
+      redirect "users/loginregister"
+    end
+  end
+
+
+
+=begin
   get '/snippets/new' do
     if logged_in?
       erb :'snippet/new'
@@ -20,10 +34,10 @@ class SnippetController < ApplicationController
 
   post '/snippets' do
     if logged_in?
-      if params[:content] == ""
+      if params[:snippet] == ""
         redirect to "/snippets/new"
       else
-        @snippet = current_user.snippets.build(content: params[:content])
+        @snippet = current_user.snippets.build(snippet: params[:snippet])
         if @snippets.save
           redirect to "/snippets/#{@snippets.id}"
         else
@@ -35,14 +49,7 @@ class SnippetController < ApplicationController
     end
   end
 
-  get '/snippetss/:id' do
-    if logged_in?
-      @snippet = Snippet.find_by_id(params[:id])
-      erb :'snippets/show'
-    else
-      redirect to '/login'
-    end
-  end
+
 
   get '/snippets/:id/edit' do
     if logged_in?
@@ -59,12 +66,12 @@ class SnippetController < ApplicationController
 
   patch '/snippets/:id' do
     if logged_in?
-      if params[:content] == ""
+      if params[:snippet] == ""
         redirect to "/snippets/#{params[:id]}/edit"
       else
         @snippet = Snippet.find_by_id(params[:id])
         if @snippet && @snippet.user == current_user
-          if @snippet.update(content: params[:content])
+          if @snippet.update(snippet: params[:snippet])
             redirect to "/snippets/#{@snippet.id}"
           else
             redirect to "/snippets/#{@snippet.id}/edit"
@@ -89,4 +96,5 @@ class SnippetController < ApplicationController
       redirect to '/login'
     end
   end
-end
+=end
+end #end Class
