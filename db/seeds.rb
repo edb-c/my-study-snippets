@@ -8,23 +8,23 @@ User.create(
   username:   'username1',
   first_name: 'firstname1',
   last_name:  'lastname1',
-#  password_digest: 'password1'
-  password_digest: BCrypt::Password.create('deus_tecum')
+  password:   'password1'
+#  password_digest: BCrypt::Password.create('deus_tecum')
 )
 
 User.create(
   username:   'username2',
   first_name: 'firstname2',
   last_name:  'lastname2',
-#  password_digest: 'password2'
-  password_digest: BCrypt::Password.create('deus_tecum')
+  password:   'password2'
+#  password_digest: BCrypt::Password.create('deus_tecum')
 )
 User.create(
   username:   'username3',
   first_name: 'firstname3',
   last_name:  'lastname3',
-#  password_digest: 'password3'
-  password_digest: BCrypt::Password.create('deus_tecum')
+  password:   'password3'
+#  password_digest: BCrypt::Password.create('deus_tecum')
 )
 
 

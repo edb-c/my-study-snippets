@@ -6,7 +6,8 @@ get '/login' do
       redirect "/snippets/#{current_user.id}"
       #erb :'users/show'
     else
-      flash[:message] = "Welcome, please sign in or register!"
+      #flash[:message] = "Welcome, please sign in or register!"
+      erb :'users/loginregister'
     end
 end
 
@@ -16,11 +17,14 @@ end
 #Set new session and redirect user to their own snippet page
 post '/login' do
   @user = User.find_by(username: params[:username])
-    if @user #&& @user.authenticate(params[:password])
+  flash[:message] = "#{@user.username}"
+    if #@user &&
+      @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/snippets/#{@user.id}"
     else
-      flash[:message] = "Username and/or password invalid, please try again."
+      flash[:message] = "#{@user.password}"
+  #    flash[:message] = "Username and/or password invalid, please try again."
       redirect '/login'
     end
 end
@@ -33,20 +37,6 @@ get '/logout' do
   redirect '/'
 end
 =begin
-
-
-  post '/login' do
-    @user = User.find_by(username: params[:username])
-
-      if @user #&& @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect "/users/show"
-  #    erb :'users/show'
-    else
-     flash[:message] = "Username and/or password invalid, please try again."
-     redirect '/login'
-   end
-  end
 
 # Register form action - Creates new user
 # Instantiate new user based on form values
