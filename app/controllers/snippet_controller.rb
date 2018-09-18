@@ -7,16 +7,23 @@ class SnippetController < ApplicationController
     if logged_in?
       erb :'users/show'
     else
-      erb :'snippets/show'
+      erb :'snippets'
     end
   end
 
+  get '/snippets' do
+    if logged_in?
+      erb :'users/show'
+    else
+      erb :'snippets/show'
+    end
+  end
 # Create a New Spinnet
 
   get '/snippets/new' do
     if logged_in?
       erb :'snippets/new'
-    else 
+    else
       redirect "users/loginregister"
     end
   end

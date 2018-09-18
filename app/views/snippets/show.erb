@@ -1,10 +1,11 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1>Snippets</h1>
+    <h1>All Snippets</h1>
     <p>Here is the current list of All Snippets.</p>
     <% @snippets = Snippet.all  %>
     <% @snippets.each do |snippet| %>
       <div>
+        Snippet Name: <%=snippet.snippet_name%>
         Category:     <%=snippet.category_id%>
         Snippet Text: <%=snippet.snippet_text%>
       </div>
