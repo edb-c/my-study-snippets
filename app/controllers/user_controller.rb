@@ -31,16 +31,16 @@ end
 # if user is saved, entries are not empty
 
 post '/register' do
-  user = User.new(params[:user])
-  if user.save
+  @user = User.new(params[:user])
+  if @user.save
     session[:user_id] = @user.id
-  #  erb :'users/show'
-     redirect "/users/show/#{@user.id}"
+    redirect "/snippets/#{@user.id}"
   else
     flash.now[:message] = "Invalid Entries. Please try again."
     erb :'users/loginregister'
   end
 end
+
 
 #Logout route
 
