@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
-#  include Slugifiable::InstanceMethods
-#  extend Slugifiable::ClassMethods
-
   has_many :snippets
   has_many :categories, :through => :snippets
 
@@ -12,6 +9,7 @@ class User < ActiveRecord::Base
 
 #ActiveRecord performs validation - rollback method, will not execute the
 #SQL, this occurs at the .save method
+
   validates :username, presence: true, uniqueness: true
 
 end

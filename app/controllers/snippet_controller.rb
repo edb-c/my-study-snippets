@@ -18,6 +18,45 @@ class SnippetController < ApplicationController
       erb :'snippets/show'
     end
   end
+
+# Get Route to Edit Snippet
+
+  get '/snippets/edit/' do
+    if logged_in? && current_user
+      @snippet = Snippet.find_by(users_id: "#{current_user.id}")
+      flash[:message] = "#{@snippet.users_id}"
+     erb :'/snippets/edit'
+    else
+      redirect "/login"
+    end
+  end
+
+# Patch Route to Edit Snippet
+
+  patch '/snippets/edit/:id' do
+
+    if logged_in? && current_user
+      @snippet = Snippet.find_by(users_id: "#{current_user.id}")
+
+      if params[:snippet_name] != ""
+        @snippet.update(snippet_name: params[:snippet_name])
+      end
+
+      if params[:snippet_text] != ""
+        @snippet.update(snippet_text: params[:snippet_text])
+      end
+
+      if params[:snippet_name] != ""
+        @snippet.update(snippet_name: params[:snippet_name])
+      end
+
+      redirect "/snippets/#{current_user.id}"
+
+  else
+    redirect '/login'
+  end
+end
+
 # Create a New Spinnet
 
   get '/snippets/new' do
@@ -29,79 +68,4 @@ class SnippetController < ApplicationController
   end
 
 
-
-=begin
-  get '/snippets/new' do
-    if logged_in?
-      erb :'snippet/new'
-    else
-      redirect to '/login'
-    end
-  end
-
-  post '/snippets' do
-    if logged_in?
-      if params[:snippet] == ""
-        redirect to "/snippets/new"
-      else
-        @snippet = current_user.snippets.build(snippet: params[:snippet])
-        if @snippets.save
-          redirect to "/snippets/#{@snippets.id}"
-        else
-          redirect to "/snippets/new"
-        end
-      end
-    else
-      redirect to '/login'
-    end
-  end
-
-
-
-  get '/snippets/:id/edit' do
-    if logged_in?
-      @snippet = Snippet.find_by_id(params[:id])
-      if @snippet && @snippet.user == current_user
-        erb :'snippets/edit'
-      else
-        redirect to '/snippets'
-      end
-    else
-      redirect to '/login'
-    end
-  end
-
-  patch '/snippets/:id' do
-    if logged_in?
-      if params[:snippet] == ""
-        redirect to "/snippets/#{params[:id]}/edit"
-      else
-        @snippet = Snippet.find_by_id(params[:id])
-        if @snippet && @snippet.user == current_user
-          if @snippet.update(snippet: params[:snippet])
-            redirect to "/snippets/#{@snippet.id}"
-          else
-            redirect to "/snippets/#{@snippet.id}/edit"
-          end
-        else
-          redirect to '/snippets'
-        end
-      end
-    else
-      redirect to '/login'
-    end
-  end
-
-  delete '/snippets/:id/delete' do
-    if logged_in?
-      @snippet = Snippet.find_by_id(params[:id])
-      if @snippet && @snippet.user == current_user
-        @snippet.delete
-      end
-      redirect to '/snippets'
-    else
-      redirect to '/login'
-    end
-  end
-=end
 end #end Class

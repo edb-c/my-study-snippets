@@ -2,14 +2,16 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1>Your Snippets</h1>
-    <p>Here is the current list of All Your Snippets.</p>
+    <p>Here is the Current list of All Your Snippets.</p>
 
     <% @snippets = Snippet.where(users_id: "#{params[:id]}")  %>
     <% if @snippets.count > 0 %>
       <% @snippets.each do |snippet| %>
         <div>
           Snippet Name: <%=snippet.snippet_name%>
+          <br>
           Category:     <%=snippet.category_id%>
+          <br>
           Snippet Text: <%=snippet.snippet_text%>
         </div>
           <% end %>
@@ -18,7 +20,12 @@
     <% end %>
     <br>
     <br>
-
-    <a href="/snippets/new">Create A New Snippet</a>
+    <a href="/snippets/edit/">EDIT this Snippet</a>
+    <br>
+    <br>
+    <a href="/snippets/delete">DELETE this Snippet</a>
+    <br>
+    <br>
+    <a href="/snippets/edit">CREATE A NEW Snippet</a>
    </div>
  </div>

@@ -3,7 +3,8 @@ class UserController < ApplicationController
 
 get '/login' do
     if logged_in?
-      redirect "/snippets/#{current_user.id}"
+      flash[:message] = "#{current_user.id}"
+  #    redirect "/snippets/#{current_user.id}"
     else
       #flash[:message] = "Welcome, please sign in or register!"
       erb :'users/loginregister'
@@ -40,7 +41,6 @@ post '/register' do
     erb :'users/loginregister'
   end
 end
-
 
 #Logout route
 
