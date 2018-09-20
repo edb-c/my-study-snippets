@@ -21,14 +21,14 @@ class SnippetController < ApplicationController
 
 # Get Route to Edit Snippet
 
-  get '/snippets/:id/edit/' do
+  get '/snippets/:id/edit' do
     @snippet = Snippet.find_by(id: params[:id])
   #  @user =
-    if logged_in? #&& current_user == @snippet.user
-      flash[:message] = "#{current_user.id}"
-    #  flash[:message] = "#{@snippet.user}"
+    if logged_in? && current_user == @snippet.user
+      #flash[:message] = "#{current_user.id}"
+      flash[:message] = "#{@snippet.user.username}"
 
-     #erb :'/snippets/edit'
+    # erb :'/snippets/edit'
     else
       redirect "/login"
     end
