@@ -14,23 +14,28 @@
        <br>
        <tr>
        <td width="250">OLD Snipppet Name: </td>
-       <td width="400"><%=@snippet.snippet_name%></td>
+       <td width="250"><%=@snippet.snippet_name%></td>
        <td width="250">NEW Snippet Name:</td>
-       <td width="400"><input id="snippet_name" type="text" name="snippet_name"><br></td>
+       <td width="250"><input id="snippet_name" type="text" name="snippet_name"><br></td>
        </tr>
        <tr>
        <td width="250">OLD Snipppet Text: </td>
-       <td width="400"><%=@snippet.snippet_text%></td>
+       <td width="250"><%=@snippet.snippet_text%></td>
        <td width="250">NEW Snippet Text:</td>
-       <td width="400"><input id="snippet_text" type="text" name="snippet_text"><br></td>
+       <td width="250"><input id="snippet_text" type="text" name="snippet_text"><br></td>
        </tr>
-       <td width="250"><input class="btn btn-primary" type="submit" value="submit">
+       <td width="250"><input class="btn btn-primary" type="submit" value="Submit">
+      <a href="/snippets/<%=@snippet.id%>"><button class="btn btn-primary">Cancel</button></a>
        </td>
        </tr>
      </tbody>
    </table>
      </form>
  </div>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
 
 </div>

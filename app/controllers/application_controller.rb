@@ -18,7 +18,12 @@ class ApplicationController < Sinatra::Base
 
 # Route for Homepage
   get '/' do
-        erb :index
+    erb :index
+  end
+
+# Route for categories
+  get '/categories' do
+    erb :categories
   end
 
 #Conventional coding pattern- create helper methods to be used

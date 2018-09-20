@@ -1,6 +1,22 @@
 class SnippetController < ApplicationController
 
 
+# Create a New Spinnet
+
+    get '/snippets/new' do
+      if logged_in?
+        erb :'snippets/new'
+      else
+        redirect "users/loginregister"
+      end
+    end
+
+    post '/snippets/new' do
+      flash[:message] = "Posted"
+
+    end
+
+
 #Show all Snippets
 
   get '/snippets/:id' do
@@ -38,7 +54,7 @@ class SnippetController < ApplicationController
 
     @snippet = Snippet.find_by(id: params[:id])
 
-  if logged_in? && current_user
+  if logged_in? && current_user == @snippet.user
     if params[:snippet_category] != ""
         @snippet.update(snippet_category: params[:snippet_category])
       end
@@ -57,15 +73,18 @@ class SnippetController < ApplicationController
   end
 end
 
-# Create a New Spinnet
+# Delete Route to Delete Snippet
 
-  get '/snippets/new' do
-    if logged_in?
-      erb :'snippets/new'
+  delete '/snippets/:id/delete' do
+
+  @snippet = Snippet.find_by(id: params[:id])
+
+    if logged_in? && current_user == @snippet.user
+      @snippet.delete
+      redirect "/snippets/#{@snippet.user_id}"
     else
-      redirect "users/loginregister"
+      redirect '/login'
     end
   end
-
 
 end #end Class
