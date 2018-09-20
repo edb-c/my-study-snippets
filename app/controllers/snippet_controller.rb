@@ -12,7 +12,7 @@ class SnippetController < ApplicationController
     end
 
 # Post Route to Create New Snippet
-    post '/snippets/new' do
+    post '/snippets' do
 
       if logged_in? && current_user
       @new_snippet = Snippet.create(

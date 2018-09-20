@@ -33,7 +33,7 @@
           <li><a href="/.#about">About</a></li>
           <li><a href="/.#contact">Contact</a></li>
       <% if logged_in? %>
-           <li><a href="/snippets/<%=current_user.id%>"">View All Your Snippets</a></li>
+           <li><a href="/snippets/<%=current_user.id%>">View All Your Snippets</a></li>
            <li><a href="/logout">Logout</a></li>
       <% else %>
            <li><a href="/snippets">View All Snippets</a></li>

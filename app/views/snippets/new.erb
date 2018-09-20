@@ -1,20 +1,29 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1>Snippets</h1>
-    <<h2>Create a New Snippet</h2>
-      <form action="/snippets/new" method="POST">
-
-        <label> Snippet Category:</label>
-        <input id="snippet_category" type="text" name="snippet_category" ><br>
-
-        <label> Snippet Name:</label>
-        <input id="snippet_name" type="text" name="snippet_name" <br>
-
-        <label> Snippet Text:</label>
-        <input id="snippet_text" type="text" name="snippet_text" ><br>
-
-
-        <input class="btn btn-primary" type="submit" value="submit">
-
-      </form>
+    <p>Create a New Snippet<p>
+    <div>
+      <form action="/snippets" method="POST">
+        <table><tbody>
+           <tr>
+           <td width="150">NEW Category Name:</td>
+           <td width="300"><input id="snippet_category" type="text" name="snippet_category"><br></td>
+           </tr>
+           <tr>
+           <td width="150">NEW Snippet Name:</td>
+           <td width="300"><input id="snippet_name" type="text" name="snippet_name"><br></td>
+           </tr>
+           <tr>
+           <td width="150">NEW Snippet Text:</td>
+           <td width="300"><input id="snippet_text" type="text" name="snippet_text"><br></td>
+           </tr>
+           <tr>
+           <td width="250"><br><input class="btn btn-primary" type="submit" value="Submit"></td>
+          <td width="250"><br><a href="/snippets"><button class="btn btn-primary">Cancel</button></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
 </div>
