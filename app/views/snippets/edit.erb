@@ -1,21 +1,36 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1>Your Snippets</h1>
-
-    <h2>Edit This Snippet</h2>
+    <p>Edit This Snippet ID: <%=@snippet.id%>- Enter the details of your New Snippet. </p>
+<div> <form action="/snippets/:id" method="POST">
+      <input type="hidden" name="_method" value="PATCH">
+   <table><tbody>
+       <tr>
+       <td width="250">OLD Category Name: </td>
+       <td width="400"><%=@snippet.snippet_category%></td>
+       <td width="250">NEW Category Name:</td>
+       <td width="400"><input id="snippet_category" type="text" name="snippet_category"><br></td>
+       </tr>
+       <br>
+       <tr>
+       <td width="250">OLD Snipppet Name: </td>
+       <td width="400"><%=@snippet.snippet_name%></td>
+       <td width="250">NEW Snippet Name:</td>
+       <td width="400"><input id="snippet_name" type="text" name="snippet_name"><br></td>
+       </tr>
+       <tr>
+       <td width="250">OLD Snipppet Text: </td>
+       <td width="400"><%=@snippet.snippet_text%></td>
+       <td width="250">NEW Snippet Text:</td>
+       <td width="400"><input id="snippet_text" type="text" name="snippet_text"><br></td>
+       </tr>
+       <td width="250"><input class="btn btn-primary" type="submit" value="submit">
+       </td>
+       </tr>
+     </tbody>
+   </table>
+     </form>
+ </div>
     <br>
-      <form action="/snippets/edit/:id" method="POST">
-        
-        <input type="hidden" name="_method" value="patch">
 
-        <label> Enter New Snippet Name:</label>
-        <input id="snippet_name" type="text" name="snippet_name"><br>
-
-        <label> Enter New Snippet Text:</label>
-        <input id="snippet_text" type="text" name="snippet_text"><br>
-
-        <br>
-        <input class="btn btn-primary" type="submit" value="submit">
-
-      </form>
 </div>

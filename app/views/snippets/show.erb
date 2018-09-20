@@ -10,6 +10,11 @@
          <table>
              <tbody>
              <tr>
+             <td width="150">Snippet ID:</td>
+             <td width="400"><%=snippet.id%></td>
+             </tr>
+             <br>
+             <tr>
              <td width="150">Snippet Category:</td>
              <td width="400"><%=snippet.snippet_category%></td>
              </tr>
@@ -22,8 +27,7 @@
              <td width="150">Snippet Text:</td>
              <td width="500"><%=snippet.snippet_text%></td>
              </tr>
-             <br>
-             <td width="250"> <a href="/snippets/<%= snippet.id%>/edit"><button>Edit</button></a>
+             <td width="250"> <a href="/snippets/<%= snippet.id%>/edit">Edit</a>
              </td>
              </tr>
            </tbody>
