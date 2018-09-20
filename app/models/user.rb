@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
+
   has_many :snippets
-  has_many :categories, :through => :snippets
 
 #From bcrypt gem - the method password, password= wraps password_digest
 #from table

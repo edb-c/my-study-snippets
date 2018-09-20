@@ -3,10 +3,10 @@ class UserController < ApplicationController
 
 get '/login' do
     if logged_in?
-      flash[:message] = "#{current_user.id}"
-  #    redirect "/snippets/#{current_user.id}"
+      #flash[:message] = "#{session[:user_id]}"
+      #flash[:message] = "#{current_user.id}"
+      redirect "/snippets/#{current_user.id}"
     else
-      #flash[:message] = "Welcome, please sign in or register!"
       erb :'users/loginregister'
     end
 end
@@ -17,10 +17,10 @@ end
 #Set new session and redirect user to their own snippet page
 post '/login' do
   @user = User.find_by(username: params[:username])
-  flash[:message] = "#{@user.username}"
     if @user &&
       @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      #flash[:message] = "#{@user.id}"
       redirect "/snippets/#{@user.id}"
     else
       redirect '/login'

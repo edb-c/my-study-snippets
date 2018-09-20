@@ -5,6 +5,7 @@
     <h2>Edit This Snippet</h2>
     <br>
       <form action="/snippets/edit/:id" method="POST">
+        
         <input type="hidden" name="_method" value="patch">
 
         <label> Enter New Snippet Name:</label>
@@ -13,9 +14,7 @@
         <label> Enter New Snippet Text:</label>
         <input id="snippet_text" type="text" name="snippet_text"><br>
 
-        <label> Enter New Snippet Category:</label>
-        <input id="snippet_category" type="text" name="snippet_category"><br>
-   <br>
+        <br>
         <input class="btn btn-primary" type="submit" value="submit">
 
       </form>

@@ -4,17 +4,17 @@
     <<h2>Create a New Snippet</h2>
       <form action="/snippets/new" method="POST">
 
+        <label> Snippet Category:</label>
+        <input id="snippet_category" type="text" name="snippet_category" placeholder="Enter Snippet Category:"><br>
+
         <label> Snippet Name:</label>
         <input id="snippet_name" type="text" name="snippet_name" placeholder="Enter Snippet Name:"><br>
 
         <label> Snippet Text:</label>
         <input id="snippet_text" type="text" name="snippet_text" placeholder="Enter Snippet Text:"><br>
 
-        <label> Snippet Categroy:</label>
-        <input id="snippet_category" type="text" name="snippet_category" placeholder="Enter Snippet Category:"><br>
-
         <label> Snippet User ID:</label>
-        <input id="hidden" type="text" name="users_id" value="" ><br>
+        <input id="hidden" type="text" name="user_id" value="" ><br>
 
         <input class="btn btn-primary" type="submit" value="submit">
 

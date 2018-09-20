@@ -1,14 +1,38 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1>All Snippets</h1>
-    <p>Here is the current list of All Snippets.</p>
-    <% @snippets = Snippet.all  %>
-    <% @snippets.each do |snippet| %>
+    <h1>Your Snippets</h1>
+    <p>Here is the Current list of All Your Snippets.</p>
+
+    <% @snippets = Snippet.where(user_id: "#{params[:id]}")  %>
+    <% if @snippets.count > 0 %>
+      <% @snippets.each do |snippet| %>
       <div>
-        Snippet Name: <%=snippet.snippet_name%>
-        Category:     <%=snippet.category_name%>
-        Snippet Text: <%=snippet.snippet_text%>
-      </div>
+         <table>
+             <tbody>
+             <tr>
+             <td width="150">Snippet Category:</td>
+             <td width="400"><%=snippet.snippet_category%></td>
+             </tr>
+             <br>
+             <tr>
+             <td width="150">Snippet Name:</td>
+             <td width="300"><%=snippet.snippet_name%></td>
+             </tr
+             <br>
+             <td width="150">Snippet Text:</td>
+             <td width="500"><%=snippet.snippet_text%></td>
+             </tr>
+             <br>
+             <td width="250"> <a href="/snippets/<%= snippet.id%>/edit"><button>Edit</button></a>
+             </td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
+          <% end %>
+    <% else %>
+      <p>You currently do not have any Snippets.</p>
     <% end %>
+
    </div>
  </div>

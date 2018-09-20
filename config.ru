@@ -15,7 +15,6 @@ use Rack::MethodOverride
 
 # Use the following controllers
 use UserController
-#use CategoryController
 use SnippetController
 # Run the ApplicationController
 run ApplicationController
