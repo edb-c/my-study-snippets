@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Your Snippets</h1>
     <p>Edit This Snippet ID: <%=@snippet.id%>- Enter the details of your New Snippet. </p>
-<div> <form action="/snippets/:id" method="POST">
+<div> <form action="/snippets/<%=@snippet.id%>" method="POST">
       <input type="hidden" name="_method" value="PATCH">
    <table><tbody>
        <tr>
