@@ -1,7 +1,7 @@
 class SnippetController < ApplicationController
 
 
-# Create a New Spinnet
+# Get Route to Create New Snippet
 
     get '/snippets/new' do
       if logged_in?
@@ -11,11 +11,23 @@ class SnippetController < ApplicationController
       end
     end
 
+# Post Route to Create New Snippet
     post '/snippets/new' do
-      flash[:message] = "Posted"
 
+      if logged_in? && current_user
+      @new_snippet = Snippet.create(
+      snippet_category: params[:snippet_category],
+      snippet_name:     params[:snippet_name],
+      snippet_text:     params[:snippet_text],
+      user_id:          current_user.id
+      )
+      @new_snippet.save
+      redirect "/snippets/#{current_user.id}"
+    else
+      flash[:message] = "Invalid entries, please try again."
+      redirect '/snippets/new'
     end
-
+  end
 
 #Show all Snippets
 
