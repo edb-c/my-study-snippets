@@ -83,10 +83,8 @@ footer .glyphicon:hover {
   font-size: 15px;
   line-height: 1.5;
 }
-/*Flash Message*/
-#flash {
-  background-color: #ffe97e;
-  height: 40px;
-  padding: 10px;
-  font-size: 15px;
+.flash {
+      background-color: #f89406;
+      border-color: #e96506;
+      color: #ffffff;
 }

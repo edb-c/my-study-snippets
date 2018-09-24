@@ -21,11 +21,17 @@ class SnippetController < ApplicationController
       snippet_text:     params[:snippet_text],
       user_id:          current_user.id
       )
-      @new_snippet.save
-      redirect "/snippets/#{current_user.id}"
-    else
-      flash[:message] = "Invalid entries, please try again."
-      redirect '/snippets/new'
+      if @new_snippet.valid?
+        redirect "/snippets/#{current_user.id}"
+      else
+        #flash[:message] = "#{@new_snippet.errors.messages}"
+        #redirect '/snippets/errors'
+        erb   :'snippets/errors' 
+      end
+      else
+      flash[:message] = "You must be logged in to create a snippet."
+
+      redirect "users/loginregister"
     end
   end
 
@@ -68,15 +74,15 @@ class SnippetController < ApplicationController
 
   if logged_in? && current_user == @snippet.user
     if params[:snippet_category] != ""
-        @snippet.update(snippet_category: params[:snippet_category])
+        @snippet.update!(snippet_category: params[:snippet_category])
       end
 
       if params[:snippet_name] != ""
-        @snippet.update(snippet_name: params[:snippet_name])
+        @snippet.update!(snippet_name: params[:snippet_name])
       end
 
       if params[:snippet_text] != ""
-        @snippet.update(snippet_text: params[:snippet_text])
+        @snippet.update!(snippet_text: params[:snippet_text])
       end
 
       redirect "/snippets/#{@snippet.user_id}"

@@ -1,5 +1,5 @@
 require './config/environment'
-
+require 'rack-flash'
 # Inherits from Sinatra::Base
 class ApplicationController < Sinatra::Base
 
@@ -12,8 +12,9 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "deus_tecum"
 
-# Required for logins and flash messages
-    register Sinatra::Flash
+# Required flash messages
+
+    use Rack::Flash, :sweep => true
   end
 
 # Route for Homepage

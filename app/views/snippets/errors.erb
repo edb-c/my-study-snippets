@@ -1,0 +1,13 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <% if @new_snippet.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @new_snippet.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+</div>
+</div>

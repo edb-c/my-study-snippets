@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :snippets
+  validates_associated :snippets
 
 #From bcrypt gem - the method password, password= wraps password_digest
 #from table
@@ -11,5 +12,5 @@ class User < ActiveRecord::Base
 #SQL, this occurs at the .save method
 
   validates :username, presence: true, uniqueness: true
-
+  validates :password, presence: true
 end

@@ -20,10 +20,11 @@ post '/login' do
     if @user &&
       @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      #flash[:message] = "#{@user.id}"
       redirect "/snippets/#{@user.id}"
     else
-      redirect '/login'
+      flash.now[:message] = "Invalid Entries. Please try again."
+      erb :'users/loginregister'
+      #redirect '/login'
     end
 end
 
