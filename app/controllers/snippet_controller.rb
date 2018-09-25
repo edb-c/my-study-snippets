@@ -74,9 +74,10 @@ class SnippetController < ApplicationController
 
     if params[:snippet_category] == nil ||
       params[:snippet_name] == nil ||
-      params[:snippet_text]
+      params[:snippet_text] == nil
       flash.now[:message] = "Input fields cannot be empty. Please try again."
       erb :'snippets/edit'
+
     else
       if params[:snippet_category] != ""
         @snippet.update!(snippet_category: params[:snippet_category])
@@ -93,11 +94,12 @@ class SnippetController < ApplicationController
       else
         flash.now[:message] = "Error with Update. Please try again."
       end
-    end
+
+    end #end ifparams
   else
     redirect '/login'
-  end
-end
+  end # end if logged_in? && current_user == @snippet.user
+end # end do
 
 # Delete Route to Delete Snippet
 
