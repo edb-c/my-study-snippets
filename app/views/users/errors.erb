@@ -1,17 +1,16 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1>Create A New Snippet Errors</h1>
+    <h1>New User Registration Errors</h1>
     <p>Here is the list of errors. Please correct your errors.</p>
 
-    <% if @new_snippet.errors.any? %>
+    <% if @user.errors.any? %>
       <div id="error_explanation">
         <ul>
-        <% @new_snippet.errors.full_messages.each do |msg| %>
+        <% @user.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
       </div>
     <% end %>
-
 </div>
 </div>

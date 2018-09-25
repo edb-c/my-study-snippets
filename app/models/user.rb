@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
 #ActiveRecord performs validation - rollback method, will not execute the
 #SQL, this occurs at the .save method
 
-  validates :username, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :username,  presence: { message: "Username must be provided." },
+                      uniqueness: { message: "Username is already in use. Please select another." }
+  #validates :password, :password_confirmation, presence: { message: "Password must be provided." }
+  validates_confirmation_of :password, :message=> "Password & Confirmation Entries must match."
+
 end

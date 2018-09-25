@@ -21,13 +21,14 @@ class SnippetController < ApplicationController
       snippet_text:     params[:snippet_text],
       user_id:          current_user.id
       )
-      if @new_snippet.valid?
-        redirect "/snippets/#{current_user.id}"
-      else
-        #flash[:message] = "#{@new_snippet.errors.messages}"
-        #redirect '/snippets/errors'
-        erb   :'snippets/errors' 
-      end
+        if @new_snippet.valid?
+          @new_snippet.save
+          redirect "/snippets/#{current_user.id}"
+        else
+          #flash[:message] = "#{@new_snippet.errors.messages}"
+          #redirect 'errors'
+          erb :errors
+        end
       else
       flash[:message] = "You must be logged in to create a snippet."
 
@@ -59,7 +60,7 @@ class SnippetController < ApplicationController
     @snippet = Snippet.find_by(id: params[:id])
     if logged_in? && current_user == @snippet.user
 #For testing
-#flash[:message] = "#{@snippet.user.id}"
+flash[:message] = "Snippet has been successfully updated."
       erb :'/snippets/edit'
     else
       redirect "/login"

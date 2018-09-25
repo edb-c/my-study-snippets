@@ -22,7 +22,7 @@ post '/login' do
       session[:user_id] = @user.id
       redirect "/snippets/#{@user.id}"
     else
-      flash.now[:message] = "Invalid Entries. Please try again."
+      flash.now[:message] = "Invalid Username and/or Password entered. Please try again."
       erb :'users/loginregister'
       #redirect '/login'
     end
@@ -34,12 +34,14 @@ end
 
 post '/register' do
   @user = User.new(params[:user])
-  if @user.save
+  if @user.valid?
+    @user.save
     session[:user_id] = @user.id
     redirect "/snippets/#{@user.id}"
   else
-    flash.now[:message] = "Invalid Entries. Please try again."
-    erb :'users/loginregister'
+    #flash.now[:message] = "Invalid Entries. Please try again."
+    #erb :'users/loginregister'
+    erb :'users/errors'
   end
 end
 
