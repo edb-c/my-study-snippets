@@ -1,8 +1,7 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1>New User Registration Errors</h1>
-    <p>Here is the list of errors. Please correct your errors.</p>
-
+    <h2>New User Registration Errors</h2>
+    <p>Here is the list of errors. Please correct.</p>
     <% if @user.errors.any? %>
       <div id="error_explanation">
         <ul>
@@ -12,5 +11,6 @@
         </ul>
       </div>
     <% end %>
+<a href="/login"><button class="btn btn-primary">GO BACK</button></a>
 </div>
 </div>

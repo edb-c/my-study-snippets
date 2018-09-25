@@ -1,6 +1,9 @@
 <div class="flash">
 <% if flash.has?(:message) %>
-  <%= flash[:message] %>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Warning!</strong> <%= flash[:message] %>
+  </div>
 <% end %>
 </div>
 <body class="login_body">

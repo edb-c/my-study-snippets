@@ -1,9 +1,4 @@
-<div class="flash">
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
-</div>
-
+<body class="snippet_body">
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1>Your Snippets</h1>
@@ -36,7 +31,7 @@
              <tr>
              <td width="210"> <a href="/snippets/<%=snippet.id%>/edit"><button class="btn btn-primary">EDIT</button></a>
              </td>
-             <td width="210"><form method="POST" action="/snippets/<%=snippet.id%>/delete"><input type="hidden" name="_method" value="delete"><input type="submit" value="DELETE" class="btn btn-primary">
+             <td width="210"><form method="POST" action="/snippets/<%=snippet.id%>/delete"><input type="hidden" name="_method" value="delete"><input type="submit" value="DELETE" class="btn btn-primary"></form>
              </td>
              </tr>
             </tbody>
@@ -50,3 +45,4 @@
      </div>
    </div>
  </div>
+  </div>

@@ -1,17 +1,17 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1>Create A New Snippet Errors</h1>
+    <h2>Create A New Snippet Errors</h2>
     <p>Here is the list of errors. Please correct your errors.</p>
 
-    <% if @new_snippet.errors.any? %>
+    <% if @snippet.errors.any? %>
       <div id="error_explanation">
         <ul>
-        <% @new_snippet.errors.full_messages.each do |msg| %>
+        <% @snippet.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
       </div>
     <% end %>
-
+<a href="/snippets/new"><button class="btn btn-primary">GO BACK</button></a>
 </div>
 </div>

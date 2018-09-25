@@ -1,16 +1,13 @@
-<div class="flash">
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
-</div>
-
+<div class="snippet_body">
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1>Your Snippets</h1>
     <p>Edit This Snippet ID: <%=@snippet.id%>- Enter the details of your New Snippet. </p>
-<div> <form action="/snippets/<%=@snippet.id%>" method="POST">
+    <div>
+      <form action="/snippets/<%=@snippet.id%>" method="POST">
       <input type="hidden" name="_method" value="PATCH">
-   <table><tbody>
+      <table>
+        <tbody>
        <tr>
        <td width="250">OLD Category Name: </td>
        <td width="400"><%=@snippet.snippet_category%></td>
@@ -31,17 +28,24 @@
        <td width="250"><input id="snippet_text" type="text" name="snippet_text"><br></td>
        </tr>
        <td width="250"><input class="btn btn-primary" type="submit" value="Submit">
-      <a href="/snippets/<%=@snippet.id%>"><button class="btn btn-primary">Cancel</button></a>
+       </form>
        </td>
        </tr>
      </tbody>
    </table>
-     </form>
- </div>
+</div>
     <br>
+    <a href="/snippets/<%=@snippet.user_id%>"><button class="btn btn-primary">Cancel</button></a>
     <br>
-    <br>
-    <br>
-    <br>
+    </td>
 
+    </div>
+    <% if flash.has?(:message) %>
+        <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong> <%= flash[:message] %>
+        </div>
+    <% end %>
+</div>
+</div>
 </div>

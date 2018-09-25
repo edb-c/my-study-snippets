@@ -83,6 +83,14 @@ footer .glyphicon:hover {
   font-size: 15px;
   line-height: 1.5;
 }
+/* For Login Register Page */
+.snippet_body {
+  margin-top: 50px;
+  position: relative;
+  min-height: 200px;
+  padding: 50px;
+
+}
 .flash {
       background-color: #f89406;
       border-color: #e96506;

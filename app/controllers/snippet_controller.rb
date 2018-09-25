@@ -15,19 +15,19 @@ class SnippetController < ApplicationController
     post '/snippets' do
 
       if logged_in? && current_user
-      @new_snippet = Snippet.create(
+      @snippet = Snippet.create(
       snippet_category: params[:snippet_category],
       snippet_name:     params[:snippet_name],
       snippet_text:     params[:snippet_text],
       user_id:          current_user.id
       )
-        if @new_snippet.valid?
-          @new_snippet.save
+        if @snippet.valid?
+          @snippet.save
           redirect "/snippets/#{current_user.id}"
         else
-          #flash[:message] = "#{@new_snippet.errors.messages}"
+          #flash[:message] = "#{@snippet.errors.messages}"
           #redirect 'errors'
-          erb :errors
+          erb :'snippets/errors'
         end
       else
       flash[:message] = "You must be logged in to create a snippet."
@@ -59,8 +59,6 @@ class SnippetController < ApplicationController
   get '/snippets/:id/edit' do
     @snippet = Snippet.find_by(id: params[:id])
     if logged_in? && current_user == @snippet.user
-#For testing
-flash[:message] = "Snippet has been successfully updated."
       erb :'/snippets/edit'
     else
       redirect "/login"
@@ -74,19 +72,29 @@ flash[:message] = "Snippet has been successfully updated."
     @snippet = Snippet.find_by(id: params[:id])
 
   if logged_in? && current_user == @snippet.user
-    if params[:snippet_category] != ""
+
+    if params[:snippet_category] == nil ||
+      params[:snippet_name] == nil ||
+      params[:snippet_text]
+      flash.now[:message] = "Input fields cannot be empty. Please try again."
+      erb :'snippets/edit'
+    else
+      if params[:snippet_category] != ""
         @snippet.update!(snippet_category: params[:snippet_category])
       end
-
       if params[:snippet_name] != ""
         @snippet.update!(snippet_name: params[:snippet_name])
       end
-
       if params[:snippet_text] != ""
         @snippet.update!(snippet_text: params[:snippet_text])
       end
 
-      redirect "/snippets/#{@snippet.user_id}"
+      if @snippet.save
+        redirect "/snippets/#{@snippet.user_id}"
+      else
+        flash.now[:message] = "Error with Update. Please try again."
+      end
+    end
   else
     redirect '/login'
   end
