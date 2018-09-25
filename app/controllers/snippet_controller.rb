@@ -36,7 +36,7 @@ class SnippetController < ApplicationController
     end
   end
 
-#Show all Snippets
+#Get Route to Show all Snippets to Registered User
 
   get '/snippets/:id' do
     if logged_in?
@@ -46,12 +46,10 @@ class SnippetController < ApplicationController
     end
   end
 
+#Get Route to Show all Snippets to Any User
+
   get '/snippets' do
-    if logged_in?
-      erb :'snippets/show'
-    else
       erb :'snippets/index'
-    end
   end
 
 # Get Route to Edit Snippet
@@ -61,7 +59,8 @@ class SnippetController < ApplicationController
     if logged_in? && current_user == @snippet.user
       erb :'/snippets/edit'
     else
-      redirect "/login"
+      flash[:message] = "You are not authorized to edit that snippet."
+      redirect "snippets/show"
     end
   end
 

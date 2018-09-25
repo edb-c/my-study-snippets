@@ -1,5 +1,6 @@
 require './config/environment'
 require 'rack-flash'
+
 # Inherits from Sinatra::Base
 class ApplicationController < Sinatra::Base
 
@@ -27,7 +28,7 @@ class ApplicationController < Sinatra::Base
     erb :categories
   end
 
-#Conventional coding pattern- create helper methods to be used
+#Helper methods to be used
   helpers do
 
     def current_user

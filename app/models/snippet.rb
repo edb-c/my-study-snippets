@@ -9,4 +9,9 @@ class Snippet < ActiveRecord::Base
     validates :snippet_category,  presence: { message: "Snippet_category must be provided." }
     validates :snippet_name,      presence: { message: "Snippet_name must be provided." }
     validates :snippet_text,      presence: { message: "snippet_text must be provided." }
+
+
+
+
+
 end

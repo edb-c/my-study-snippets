@@ -1,6 +1,8 @@
 # Inherits from ApplicationController
 class UserController < ApplicationController
 
+# Get Route for Copyright (c) 2018 Copyright Holder All Rights Reserved.ogin
+
 get '/login' do
     if logged_in?
       #flash[:message] = "#{session[:user_id]}"
@@ -11,10 +13,12 @@ get '/login' do
     end
 end
 
+#Post Route for Login
 #Login user
 #Find user by inputted username
 #Authenticate user -valid username and password
 #Set new session and redirect user to their own snippet page
+
 post '/login' do
   @user = User.find_by(username: params[:username])
     if @user &&
@@ -28,6 +32,7 @@ post '/login' do
     end
 end
 
+#Post Route for Register
 # Register form action - Creates new user
 # Instantiate new user based on form values
 # if user is saved, entries are not empty
@@ -45,7 +50,7 @@ post '/register' do
   end
 end
 
-#Logout route
+#Get Route for Logout
 
 get '/logout' do
   session.clear

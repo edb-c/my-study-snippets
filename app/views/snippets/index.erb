@@ -5,6 +5,8 @@
     <% @snippets = Snippet.all  %>
     <% @snippets.each do |snippet| %>
       <div>
+        Snippet Created by User: <%=snippet.id%>
+        <br>
         Snippet Category: <%=snippet.snippet_category%>
         <br>
         Snippet Name: <%=snippet.snippet_name%>
