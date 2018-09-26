@@ -22,7 +22,12 @@ User.create(
   last_name:  'lastname3',
   password:   'password3'
 )
-
+User.create(
+  username:   'nina123',
+  first_name: 'Nina',
+  last_name:  'C',
+  password:   'password'
+)
 #=begin
 
 Snippet.create(
@@ -61,6 +66,26 @@ Snippet.create(
   snippet_name:     'What is Sinatra?',
   snippet_text:     'Sinatra is what is known as a Domain Specific Language, or DSL. A DSL is a specialized, situation-specific language. Sinatra was built expressly for the purpose of creating web applications with Ruby.',
   user_id:           3
+)
+Snippet.create(
+  snippet_category: 'Code-Snippet',
+  snippet_name:     'def current_user?',
+  snippet_text:     '@current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  Finds the user by session user_id which was set during login.  It assigns it to instance variable @current_user, if it not assigned yet.
+  ',
+  user_id:           4
+)
+Snippet.create(
+  snippet_category: 'Code-Snippet',
+  snippet_name:     'def logged_in?',
+  snippet_text:     '!!current_user - is Booleanizing the current_user method, so that this method can return true if user is logged in or false if not.',
+  user_id:           4
+)
+Snippet.create(
+  snippet_category: 'Sinatra - BCrypt',
+  snippet_name:     'What is BCrypt?',
+  snippet_text:     'An open-source gem that works to encrypt passwords. BCrypt will store a salted, hashed version of user password in the database in a column called password_digest. It works with ActiveRecord has_secure_password method that is defined in the User model. This will validate the password match using the authenticate method.',
+  user_id:           4
 )
 
 # My References
