@@ -87,7 +87,30 @@ Snippet.create(
   snippet_text:     'An open-source gem that works to encrypt passwords. BCrypt will store a salted, hashed version of user password in the database in a column called password_digest. It works with ActiveRecord has_secure_password method that is defined in the User model. This will validate the password match using the authenticate method.',
   user_id:           4
 )
+Snippet.create(
+  snippet_category: 'Active Record',
+  snippet_name:     'Shovel',
+  snippet_text:     'NOTE: When using the shovel operator, Active Record instantly fires update SQL without waiting for the save or update call on the parent object, unless the parent object is a new record.',
+  user_id:           4
+)
+Snippet.create(
+  snippet_category: 'MVC Paradigm',
+  snippet_name:     'What is the Model-View-Controller paradigm?',
+  snippet_text:     'The Model-View-Controller paradigm is a popular way of building frameworks for web applications - it provides a separation of concerns where groups of files have specific jobs and interact with each other in very defined ways. In a nutshell:
 
+* Models: The logic of a web application. This is where data is manipulated and/or saved.
+* Views: The front-end, user-facing part of a web application - this is the only part of the app that the user interacts with directly. Views generally consist of HTML, CSS, and Javascript.
+* Controllers: The go-between for models and views. The controller relays data from the browser to the application, and from the application to the browser.
+
+In Sinatra, controllers are written in Ruby and consist of routes that take requests sent from the browser ("GET this data", "POST that data"), run code based on those requests by using models, and then render the .erb (view) files for the user to see.',
+  user_id:           4
+)
+Snippet.create(
+  snippet_category: 'Active Record ORM',
+  snippet_name:     'What is Active Record ORM?',
+  snippet_text:     'Active Record is a Ruby gem, meaning we get an entire library of code just by running gem install activerecord or by including it in our Gemfile. As a result, we can get an enormous amount of functionality simply by following a few conventions.',
+  user_id:           1
+)
 # My References
 #http://www.xyzpub.com/en/ruby-on-rails/3.2/seed_rb.html
 #https://stackoverflow.com/
