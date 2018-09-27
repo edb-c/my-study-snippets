@@ -1,5 +1,5 @@
 # My Study Snippets application
-This application is created to help one study, by giving a user the ability create, read, update, study snippets from various programming topics.
+This application is created to help one study, by giving a user the ability create, read, update, study snippets from various programming topics.  It is an MVC Sinatra application using ActiveRecord to interact with the database and Bootstrap to create responsive design for the views.  
 
 # This application allows a user to
   - Register for an account
@@ -17,13 +17,13 @@ This application is created to help one study, by giving a user the ability crea
     $ bundle install
     $ rake db:create  
     $ rake db:migrate
+    $ rake db:seed
 
 # Run the server
 
     $ shotgun
 
 Visit the IP server address listed.
-
 
 # License
 [MIT License]
